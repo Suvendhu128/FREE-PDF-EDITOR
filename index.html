@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free PDF Tools Suite - Professional PDF Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__brand">
+                    <h1 class="header__title" id="headerTitle">
+                        <i class="fas fa-file-pdf header__icon"></i>
+                        Free PDF Tools Suite
+                    </h1>
+                    <div class="header__badges">
+                        <span class="badge badge--free">100% FREE</span>
+                        <span class="badge badge--unlimited">Unlimited</span>
+                    </div>
+                </div>
+                <nav class="header__nav">
+                    <button class="btn btn--outline btn--sm" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Dashboard View -->
+        <div id="dashboard" class="dashboard">
+            <div class="container">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="hero__content">
+                        <h2 class="hero__title">Professional PDF Tools - 100% Free Forever</h2>
+                        <p class="hero__subtitle">No Hidden Costs, No Subscriptions, No Limits</p>
+                        <div class="hero__features">
+                            <div class="hero__feature">
+                                <i class="fas fa-infinity"></i>
+                                <span>Unlimited Files</span>
+                            </div>
+                            <div class="hero__feature">
+                                <i class="fas fa-user-times"></i>
+                                <span>No Registration</span>
+                            </div>
+                            <div class="hero__feature">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                                <span>No Size Limits</span>
+                            </div>
+                            <div class="hero__feature">
+                                <i class="fas fa-star"></i>
+                                <span>Always Free</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="search-box">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="searchInput" class="search-input" placeholder="Search for a tool...">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Category Navigation -->
+                <nav class="category-nav">
+                    <button class="category-btn active" data-category="all">
+                        <i class="fas fa-th"></i>
+                        <span>All Tools</span>
+                        <span class="tool-count">15</span>
+                    </button>
+                    <button class="category-btn" data-category="convert">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Convert</span>
+                        <span class="tool-count">6</span>
+                    </button>
+                    <button class="category-btn" data-category="edit">
+                        <i class="fas fa-edit"></i>
+                        <span>Edit</span>
+                        <span class="tool-count">4</span>
+                    </button>
+                    <button class="category-btn" data-category="organize">
+                        <i class="fas fa-folder"></i>
+                        <span>Organize</span>
+                        <span class="tool-count">3</span>
+                    </button>
+                </nav>
+
+                <!-- Tools Grid -->
+                <section class="tools-section">
+                    <div id="toolsGrid" class="tools-grid">
+                        <!-- Tools will be dynamically inserted here -->
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Tool View -->
+        <div id="toolView" class="tool-view hidden">
+            <div class="container">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <button class="breadcrumb__link" id="backToDashboard">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Dashboard
+                    </button>
+                    <span class="breadcrumb__separator">/</span>
+                    <span id="currentToolName" class="breadcrumb__current"></span>
+                </nav>
+
+                <!-- Tool Interface -->
+                <div class="tool-interface">
+                    <div class="tool-header">
+                        <div class="tool-icon" id="toolIcon"></div>
+                        <div class="tool-info">
+                            <h2 id="toolTitle"></h2>
+                            <p id="toolDescription"></p>
+                            <div class="tool-badges">
+                                <span class="badge badge--free">100% FREE</span>
+                                <span class="badge badge--no-limits">No Limits</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Upload Area -->
+                    <div class="upload-section">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-content">
+                                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                <h3 class="upload-title">Drag and drop your files here</h3>
+                                <p class="upload-subtitle">or click to select files</p>
+                                <p class="upload-note">Supports: PDF, Word, Excel, PowerPoint, Images</p>
+                                <button type="button" class="btn btn--primary upload-btn" id="uploadButton">
+                                    <i class="fas fa-file-plus"></i>
+                                    Select Files
+                                </button>
+                                <input type="file" id="fileInput" class="file-input" multiple 
+                                       accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.gif">
+                            </div>
+                        </div>
+
+                        <!-- File List -->
+                        <div id="fileList" class="file-list hidden">
+                            <h3 class="file-list__title">
+                                <i class="fas fa-check-circle"></i>
+                                Selected Files
+                            </h3>
+                            <div id="filesContainer" class="files"></div>
+                        </div>
+
+                        <!-- Tool Settings -->
+                        <div id="toolSettings" class="tool-settings hidden">
+                            <h3 class="tool-settings__title">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </h3>
+                            <div id="settingsContainer" class="settings-container">
+                                <!-- Dynamic settings will be inserted here -->
+                            </div>
+                        </div>
+
+                        <!-- Process Button -->
+                        <div id="processSection" class="process-section hidden">
+                            <button id="processBtn" class="btn btn--primary btn--lg btn--full-width">
+                                <i class="fas fa-magic"></i>
+                                <span id="processBtnText">Process Files - FREE</span>
+                            </button>
+                            <p class="process-note">✓ No watermarks • ✓ Full quality • ✓ Unlimited processing</p>
+                        </div>
+
+                        <!-- Progress Section -->
+                        <div id="progressSection" class="progress-section hidden">
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div id="progressFill" class="progress-fill"></div>
+                                </div>
+                                <p id="progressText" class="progress-text">Processing... 0%</p>
+                                <p class="progress-note">Processing with professional quality - No premium required!</p>
+                            </div>
+                        </div>
+
+                        <!-- Results Section -->
+                        <div id="resultsSection" class="results-section hidden">
+                            <div class="results-header">
+                                <i class="fas fa-check-circle results-icon"></i>
+                                <h3 class="results-title">Files processed successfully!</h3>
+                                <p class="results-subtitle">✓ No watermarks • ✓ Full resolution • ✓ Professional quality</p>
+                            </div>
+                            <div id="downloadButtons" class="download-buttons">
+                                <!-- Download buttons will be inserted here -->
+                            </div>
+                            <div class="results-actions">
+                                <button id="processAnotherBtn" class="btn btn--outline">Process Another File</button>
+                                <button id="backToDashboardBtn" class="btn btn--secondary">Back to Dashboard</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h4 class="footer__title">Free PDF Tools Suite</h4>
+                    <p class="footer__text">Professional PDF tools for everyone. 100% free, secure, and unlimited usage forever.</p>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__title">Convert Tools</h4>
+                    <ul class="footer__list">
+                        <li><a href="#" class="footer__link">PDF to Word</a></li>
+                        <li><a href="#" class="footer__link">PDF to Excel</a></li>
+                        <li><a href="#" class="footer__link">PDF to PowerPoint</a></li>
+                        <li><a href="#" class="footer__link">Image to PDF</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__title">Edit Tools</h4>
+                    <ul class="footer__list">
+                        <li><a href="#" class="footer__link">Edit PDF</a></li>
+                        <li><a href="#" class="footer__link">Watermark PDF</a></li>
+                        <li><a href="#" class="footer__link">Rotate PDF</a></li>
+                        <li><a href="#" class="footer__link">Compress PDF</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2024 Free PDF Tools Suite. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
